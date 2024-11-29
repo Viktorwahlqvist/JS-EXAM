@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Secular+One&display=swap');
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    position: relative;
+    height: 100vh;
+    background: linear-gradient(to left, #0C164D, #190B22);
+    overflow: hidden;
+}
+.header-container{
+    position: absolute;
+    width: 625px;
+    height: 121px;
+    top: 60px;
+    left: 600px;
+    gap: 16px;
+}
+#name{
+    Width:625px;
+    height: 60px;
+    line-height: 60px;
+    letter-spacing: 9px;
+    text-align: right;
+    font-size: 3rem;
+    color: #FFFFFF;
+    font-family: "Secular One", sans-serif;
+    font-weight: 400;
+
+}
+#type{
+    Width:625px;
+    height: 60px;
+    line-height: 24px;
+    text-align: right;
+    letter-spacing: 24px;
+    font-size: 1.5rem;
+    color: #FFD029;
+    font-family: "Secular One", serif;
+    font-weight: 400;
+
+
+}
+
+main.main-container section.planeter-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+
+    
+    
+}
+main.main-container section.planeter-container .sun{
+    position: absolute;
+    width: 1278px;
+    height: 1278px;
+    left: -1225px;
+    background: #FFD029;
+    border-radius: 50%;
+    box-shadow: 0 0 70px 5px rgba(255, 223, 0, 0.3);
+}
+main.main-container section.planeter-container section.planeter{
+    display: flex;
+    justify-content: flex-start;
+    gap: 5%;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+main.main-container section.planeter-container section.planeter .mercury{
+    margin-left: 13%;
+    background: #8c8a84;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+main.main-container section.planeter-container section.planeter .venus {
+    background: #e7cccb;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+main.main-container section.planeter-container section.planeter .earth{
+    background: #418ed5;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+
+}
+main.main-container section.planeter-container section.planeter .mars{
+    background: #ef5f5f;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+
+main.main-container section.planeter-container section.planeter .jupiter{
+    background: #e29468;
+    width: 188px;
+    height: 188px;
+    border-radius: 50%;
+}
+
+main.main-container section.planeter-container section.planeter .saturn{
+    position: relative;
+    background: #c7aa72;
+    width: 144px;
+    height: 144px;
+    border-radius: 50%;   
+}
+
+main.main-container section.planeter-container section.planeter .saturn::before{
+    position: absolute;
+    top: 50%;
+    left: -23%;
+    content: "";
+    width: 218.23px;
+    height: 5.5px;
+    background: white;
+    border-radius: 30%;
+    opacity: 0.5;
+    transform: translateY(-50%) rotate(-30deg);
+}
+
+main.main-container section.planeter-container section.planeter .uranus{
+    background: #c7aa72;
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;   
+}
+
+main.main-container section.planeter-container section.planeter .neptune{
+    background: #7A91A7;
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+}
