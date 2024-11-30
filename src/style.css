@@ -87,8 +87,8 @@ main.main-container section.planeter-container section.planeter .mercury{
 }
 main.main-container section.planeter-container section.planeter .venus {
     background: #e7cccb;
-    width: 16px;
-    height: 16px;
+    width: 26px;
+    height: 26px;
     border-radius: 50%;
 }
 
@@ -146,4 +146,106 @@ main.main-container section.planeter-container section.planeter .neptune{
     width: 66px;
     height: 66px;
     border-radius: 50%;
+}
+
+@media screen and (max-width: 768px) {
+    body{
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .header-container{
+        position: absolute;
+        width: 100%;
+        height: auto;
+        top: 0;
+        left: 0;
+        
+    }
+    #name{
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+    }
+    #type{
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+    }
+    main.main-container section.planeter-container .sun{
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        left: -750px;
+    }
+    main.main-container section.planeter-container section.planeter{
+        gap: 4%;
+        align-items: center;
+        margin-left: 15px;
+    }
+    main.main-container section.planeter-container section.planeter .mercury{
+        margin-left: 13%;
+        background: #8c8a84;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+    }
+    main.main-container section.planeter-container section.planeter .venus {
+        background: #e7cccb;
+        width: 8.67px;
+        height: 8.67px;
+        border-radius: 50%;
+    }
+    
+    main.main-container section.planeter-container section.planeter .earth{
+        background: #418ed5;
+        width: 9.33px;
+        height: 9.33px;
+        border-radius: 50%;
+    
+    }
+    main.main-container section.planeter-container section.planeter .mars{
+        background: #ef5f5f;
+        width: 4.67px;
+        height: 4.67px;
+        border-radius: 50%;
+    }
+    
+    main.main-container section.planeter-container section.planeter .jupiter{
+        background: #e29468;
+        width: 62.67px;
+        height: 62.67px;
+        border-radius: 50%;
+    }
+    
+    main.main-container section.planeter-container section.planeter .saturn{
+        position: relative;
+        background: #c7aa72;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;   
+    }
+    
+    main.main-container section.planeter-container section.planeter .saturn::before{
+        position: absolute;
+        top: 50%;
+        left: -23%;
+        content: "";
+        width: 72.74333333333333px;
+        height: 1,833333333333333px;
+    }
+    
+    main.main-container section.planeter-container section.planeter .uranus{
+        background: #c7aa72;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;   
+    }
+    
+    main.main-container section.planeter-container section.planeter .neptune{
+        background: #7A91A7;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+}
 }
