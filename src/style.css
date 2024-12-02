@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Secular+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Secular+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Secular+One&display=swap');
 
 * {
     padding: 0;
@@ -10,9 +9,11 @@
 
 body{
     position: relative;
-    height: 100vh;
-    background: linear-gradient(to left, #0C164D, #190B22);
-    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background: linear-gradient(to left, #0C164D, #190B22) center center/cover;
+    overflow: auto;
 
 /* First page */
 }
@@ -20,8 +21,8 @@ body{
     position: absolute;
     width: 625px;
     height: 121px;
-    top: 60px;
-    left: 600px;
+    top: 2%;
+    right: 2%;
     gap: 16px;
 }
 #name{
@@ -36,7 +37,7 @@ body{
     font-weight: 400;
 
 }
-#type{
+#latin{
     Width:625px;
     height: 60px;
     line-height: 24px;
@@ -50,9 +51,6 @@ body{
 
 }
 
-.hide{
-    display: none;
-}
 
 main.main-container section.planeter-container{
     position: relative;
@@ -70,6 +68,7 @@ main.main-container section.planeter-container .sun{
     background: #FFD029;
     border-radius: 50%;
     box-shadow: 0 0 70px 5px rgba(255, 223, 0, 0.3);
+    animation: move 5s infinite forwards;
 }
 main.main-container section.planeter-container section.planeter{
     display: flex;
@@ -154,12 +153,12 @@ main.main-container section.planeter-container section.planeter .neptune{
     height: 66px;
     border-radius: 50%;
 }
-main #search-form{
+main #searchForm{
     position: absolute;
     bottom: 10% ;
     right: 34%;
 }
-main #planet-search{
+main #planetSearch{
     color: white;
     font-size: 2rem;
     background: transparent;
@@ -168,10 +167,10 @@ main #planet-search{
     border-bottom: 1px solid black;
     margin-right: 30px;
 }
-main #planet-search:focus,main #planet-search:hover {
+main #planetSearch:focus,main #planetSearch:hover {
     border: 2px solid black;
 }
-main #planet-search::placeholder{
+main #planetSearch::placeholder{
     color: white;
     opacity: 0.5;
 }
@@ -203,7 +202,7 @@ main section .moon {
     width: 1278px;
     height: 1278px;
     left: -1548px;
-    top: -100%;
+    top: -355px;
     background: #428ED4;
     border-radius: 50%;
 }
@@ -229,7 +228,9 @@ main section .moon::after {
     height: 1500px;
     background: #428ED40F;
 }
-main #planet-name{
+main #planetName{
+    width: 100%;
+    height: 100%;
     line-height: 60px;
     letter-spacing: 9px;
     font-size: 2.5rem;
@@ -237,7 +238,9 @@ main #planet-name{
     font-family: "Secular One", sans-serif;
     font-weight: 400;
 }
-main #planet-type{
+main #latinName{
+    width: 100%;
+    height: 100%;
     margin-top: 10px;
     line-height: 24px;
     letter-spacing: 12px;
@@ -247,27 +250,37 @@ main #planet-type{
     font-weight: 400;
 }
 main #desc{
+    width: 100%;
+    height: 100%;
     margin-top: 10px;
     font-family: "Roboto", condensed;
     font-weight: 300;
     color: #FFFFFF;
     font-size: 1rem;
     line-height: 30.6px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgb(43, 43, 43);
 }
 main .information{
+    width: 100%;
+    height: 100%;
     margin-top: 50px;
     text-align: center;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid rgb(43, 43, 43);
 }
-main #circumference, main #distance, main #maxTemp, main #lowTemp{
+main #circumference, main #distance, main #dayTemp, main #nightTemp,
+main #planetType, main #moonInfo{
     gap :4px;
     color: #FFFFFF;
     font-family: "Roboto", condensed;
     font-weight: 300;
 }
-main #back-button{
+
+main #backButton{
     position: absolute;
     top: 4%;
     right: 10%;
@@ -295,6 +308,20 @@ main #back-button{
         box-shadow: 0 0 40px rgba(0, 0, 0, 1.8);
     }
     
+}
+@keyframes move {
+    0%{
+        left: -1225px;
+    }
+    50%{
+        left: -1245px;
+    }
+    100%{
+        left: -1245px;
+    }
+    100%{
+        left: -1225px;
+    }
 }
 
 
@@ -398,14 +425,15 @@ main #back-button{
         height: 22px;
         border-radius: 50%;
 }
-main #search-form{
+main #searchForm{
     position: absolute;
     bottom: 10% ;
-    right: 15%;
+    right: 20%;
 }
-main #planet-search{
+main #planetSearch{
     font-size: 1rem;
     text-align: center;
+    margin-right: 0;
 }
 main #searchBtn{
     background-color: #FFFFF0;

@@ -1,14 +1,19 @@
-// Variables for all elements
+// Variables for all elements first page
 const planetSearch = document.getElementById('planetSearch');
 const searchBtn = document.getElementById('searchBtn');
 const errorMsg = document.getElementById('errorMsg');
-const headerContainer = document.getElementById('headerContainer');
-const searchView = document.getElementById('searchView');
-const resultView = document.getElementById('resultView');
-const moon = document.getElementById('moon');
+// Variables for alla elements second page
 const desc = document.getElementById('desc');
 const circumference = document.getElementById('circumference');
 const distance = document.getElementById('distance');
+const planetName = document.getElementById('planetName');
+const latinName = document.getElementById('latinName');
+const dayTemp = document.getElementById('dayTemp');
+const planetType = document.getElementById('planetType');
+const nightTemp = document.getElementById('nightTemp');
+const moonInfo = document.getElementById('moonInfo');
+const backButton = document.getElementById('backButton');
+
 // API code
 const url = 'https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com';
 let apiKey;
@@ -18,80 +23,128 @@ const fetchApiKey = async () => {
         const response = await fetch(`${url}/keys`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+            },
         });
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
 
         const data = await response.json();
-        apiKey = data.key
-        console.log(apiKey);
-        fetchDataWithKey();
+        apiKey = data.key;
+        console.log('API Key:', apiKey);
 
+        if (apiKey) {
+            fetchDataWithKey();
+        }
     } catch (error) {
-        console.log('Fetch error:', error);
+        console.error('Fetch error:', error);
     }
-}
-
-fetchApiKey();
+};
 
 const fetchDataWithKey = async () => {
     if (!apiKey) {
-        console.log('error no api key.');
-        
+        console.error('No key.');
+        return;
     }
+
     try {
         const response = await fetch(`${url}/bodies`, {
-            headers: { 'x-zocom': `${apiKey}`,
-                        'Content-Type': 'application/json'
-        }
+            headers: {
+                'x-zocom': apiKey,
+                'Content-Type': 'application/json',
+            },
+        });
 
-        })
-        if (!response.ok){
+        if (!response.ok) {
             throw new Error('Network response was not ok');
         }
+
         const data = await response.json();
 
-        searchBtn.addEventListener('click', (event) => {
-            event.preventDefault()
-            const userSearch = planetSearch.value.trim();
-            if(userSearch){
-                errorMsg.textContent = ""
-                const searchedData = data.bodies.filter(item  => item.name.includes(userSearch));
-                console.log(searchedData);
-                headerContainer.classList.toggle('hide');
-                searchView.classList.toggle('hide');
-                resultView.classList.toggle('hide');
-                moon.classList.toggle('hide');
-                
-                const displayData = searchedData[0];
-                //Change html
-                desc.textContent = displayData.desc;
-                //creating new parapragh element to hold circumference.
-                const newcircumference = document.createElement('p');
-                //Formating and giving variable the value of displaydata.circumference
-                newcircumference.textContent = ` ${displayData.circumference.toLocaleString('sv-SE')} km`;
-                // Adding newcircumference as childelement.
-                circumference.appendChild(newcircumference);
+        if (data.bodies && searchBtn) {
+            searchBtn.addEventListener('click', (event) => {
+                event.preventDefault();
 
-                //creating new parapragh element to hold distance.
+                const userSearch = planetSearch.value.trim();
+                if (!userSearch) {
+                    errorMsg.textContent = "Please enter a search term.";
+                }
+
+                const searchedData = data.bodies.filter(item =>
+                    item.name.toLowerCase().includes(userSearch.toLowerCase())
+                );
+
+                if (searchedData.length > 0) {
+                    
+                    localStorage.setItem('SearchedData', JSON.stringify(searchedData));
+                    window.location.href = 'results.html';
+                } else {
+                    errorMsg.textContent = "Couldn't find any results.";
+                }
+            });
+        }
+    } catch (error) {
+        console.error('Fetch error:', error);
+    }
+};
+
+function loadLocalStorage() {
+    const storedData = localStorage.getItem('SearchedData');
+    if(window.location.pathname === '/results.html'){
+        if (storedData) {
+            const display = JSON.parse(storedData)[0];
+            if (display) {
+                console.log(display);
+                planetName.textContent = display.name.toUpperCase();
+                latinName.textContent = display.latinName.toUpperCase();
+                desc.textContent = display.desc;
+                
+    
+                const newCircumference = document.createElement('p');
+                newCircumference.textContent = `${display.circumference.toLocaleString('sv-SE')} km`;
+                circumference.appendChild(newCircumference);
+    
                 const newDistance = document.createElement('p');
-                newDistance.textContent = `${displayData.distance.toLocaleString('sv-SE')} km`;
+                newDistance.textContent = `${display.distance.toLocaleString('sv-SE')} km`;
                 distance.appendChild(newDistance);
 
+                const newDayTemp = document.createElement('p');
+                newDayTemp.textContent = `${display.temp.day} °C`;
+                dayTemp.appendChild(newDayTemp);
 
-                
-                
-            } else {
-                errorMsg.textContent = "Couldn't find any results."
+                const newNightTemp = document.createElement('p');
+                newNightTemp.textContent = `${display.temp.night} °C`;
+                nightTemp.appendChild(newNightTemp);
+
+                const newPlanetType = document.createElement('p');
+                newPlanetType.textContent = `${display.type.charAt(0).toUpperCase()}${display.type.slice(1)}`;
+                planetType.appendChild(newPlanetType);
+
+                const newMoonInfo = document.createElement('p');
+                newMoonInfo.textContent = display.moons;
+                moonInfo.appendChild(newMoonInfo);
+
+
             }
-        })
-        
+        } else {
+            console.error('No data found in localStorage.');
+        }
+    
     }
-    catch (error){
-        console.log('Fetch error:', error);
-    }
-
 }
+
+document.addEventListener('DOMContentLoaded', loadLocalStorage);
+
+fetchApiKey();
+
+document.addEventListener('DOMContentLoaded', () => {
+    if(backButton){
+        backButton.addEventListener('click', () => {
+            window.location.href = '/index.html';
+                localStorage.removeItem('SearchedData');
+        });
+    }
+})
+
+
