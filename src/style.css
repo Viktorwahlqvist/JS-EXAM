@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Secular+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Secular+One&display=swap');
-
-
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Secular+One&display=swap');
 
 * {
     padding: 0;
@@ -14,6 +13,8 @@ body{
     height: 100vh;
     background: linear-gradient(to left, #0C164D, #190B22);
     overflow: hidden;
+
+/* First page */
 }
 .header-container{
     position: absolute;
@@ -49,6 +50,10 @@ body{
 
 }
 
+.hide{
+    display: none;
+}
+
 main.main-container section.planeter-container{
     position: relative;
     display: flex;
@@ -56,9 +61,6 @@ main.main-container section.planeter-container{
     overflow: hidden;
     height: 100vh;
     width: 100vw;
-
-    
-    
 }
 main.main-container section.planeter-container .sun{
     position: absolute;
@@ -78,6 +80,11 @@ main.main-container section.planeter-container section.planeter{
     height: 100%;
 }
 
+main.main-container section.planeter-container section.planeter .spin:hover{
+    animation: spin 1s linear;
+    cursor: pointer;
+    
+}
 main.main-container section.planeter-container section.planeter .mercury{
     margin-left: 13%;
     background: #8c8a84;
@@ -147,12 +154,155 @@ main.main-container section.planeter-container section.planeter .neptune{
     height: 66px;
     border-radius: 50%;
 }
+main #search-form{
+    position: absolute;
+    bottom: 10% ;
+    right: 34%;
+}
+main #planet-search{
+    color: white;
+    font-size: 2rem;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid black;
+    margin-right: 30px;
+}
+main #planet-search:focus,main #planet-search:hover {
+    border: 2px solid black;
+}
+main #planet-search::placeholder{
+    color: white;
+    opacity: 0.5;
+}
+main #searchBtn{
+    background-color: #FFFFF0;
+    font-size: 1.5rem;
+    padding: 8px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+main #errorMsg{
+    font-size: 1rem;
+    color: red;
+}
+
+/* Second page */
+
+main #resultView{
+    position: relative;
+    margin: 10px auto;
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+main section .moon {
+    position: absolute;
+    width: 1278px;
+    height: 1278px;
+    left: -1548px;
+    top: -100%;
+    background: #428ED4;
+    border-radius: 50%;
+}
+
+main section .moon::before,
+main section .moon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+
+main section .moon::before {
+    width: 1400px;
+    height: 1400px;
+    background: #428ED41A;
+}
+
+main section .moon::after {
+    width: 1500px;
+    height: 1500px;
+    background: #428ED40F;
+}
+main #planet-name{
+    line-height: 60px;
+    letter-spacing: 9px;
+    font-size: 2.5rem;
+    color: #FFFFFF;
+    font-family: "Secular One", sans-serif;
+    font-weight: 400;
+}
+main #planet-type{
+    margin-top: 10px;
+    line-height: 24px;
+    letter-spacing: 12px;
+    font-size: 1.5rem;
+    color: #FFD029;
+    font-family: "Secular One", serif;
+    font-weight: 400;
+}
+main #desc{
+    margin-top: 10px;
+    font-family: "Roboto", condensed;
+    font-weight: 300;
+    color: #FFFFFF;
+    font-size: 1rem;
+    line-height: 30.6px;
+}
+main .information{
+    margin-top: 50px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+main #circumference, main #distance, main #maxTemp, main #lowTemp{
+    gap :4px;
+    color: #FFFFFF;
+    font-family: "Roboto", condensed;
+    font-weight: 300;
+}
+main #back-button{
+    position: absolute;
+    top: 4%;
+    right: 10%;
+    background-color: #FFFFF0;
+    font-size: 1rem;
+    padding: 4px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+    }
+    50%{
+        transform: rotate(180deg);
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.12);
+    }
+    
+    100%{
+        transform: rotate(360deg);
+        box-shadow: 0 0 40px rgba(0, 0, 0, 1.8);
+    }
+    
+}
+
 
 @media screen and (max-width: 768px) {
     body{
         width: 100vw;
         height: 100vh;
-        overflow: hidden;
+        overflow: auto;
     }
     .header-container{
         position: absolute;
@@ -247,5 +397,19 @@ main.main-container section.planeter-container section.planeter .neptune{
         width: 22px;
         height: 22px;
         border-radius: 50%;
+}
+main #search-form{
+    position: absolute;
+    bottom: 10% ;
+    right: 15%;
+}
+main #planet-search{
+    font-size: 1rem;
+    text-align: center;
+}
+main #searchBtn{
+    background-color: #FFFFF0;
+    font-size: 1rem;
+    padding: 4px 10px;
 }
 }
