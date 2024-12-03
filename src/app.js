@@ -175,6 +175,7 @@ function loadLocalStorage() {
                     if(display.moons.length > 0){
                          // creating new element
                         const newMoonUl = document.createElement('ul');
+                        moonInfo.replaceWith(newMoonUl);
                        
                         // forEach incase of its more then 1 moons. 
                         display.moons.forEach(moon => {
@@ -183,8 +184,6 @@ function loadLocalStorage() {
                             // appending the new child to the parent.
                             newMoonUl.appendChild(newMoonLi);
                         });
-                            // Add the ul to mooninfo element.
-                            moonInfo.appendChild(newMoonUl);
                     } else {
                         const newMoonInfo = document.createElement('p');
                         // if the planet doesn't have any moons, it will display this message.
