@@ -422,7 +422,7 @@ main #planetType, main #moonInfo{
     font-family: "Roboto", condensed;
     font-weight: 300;
 }
-ul #moonInfo{
+.moonInfo{
     list-style: none;
 }
 
