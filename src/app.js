@@ -175,6 +175,7 @@ function loadLocalStorage() {
                     if(display.moons.length > 0){
                          // creating new element
                         const newMoonUl = document.createElement('ul');
+                        newMoonUl.id = moonInfo;
                         moonInfo.replaceWith(newMoonUl);
                        
                         // forEach incase of its more then 1 moons. 
