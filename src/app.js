@@ -175,7 +175,7 @@ function loadLocalStorage() {
                     if(display.moons.length > 0){
                          // creating new element
                         const newMoonUl = document.createElement('ul');
-                        newMoonUl.textContent = 'Månar:'
+                        newMoonUl.innerHTML = 'Månar:'
                         newMoonUl.classList.add('moonInfo');
                         moonInfo.replaceWith(newMoonUl);
                        
