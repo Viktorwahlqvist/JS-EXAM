@@ -183,8 +183,8 @@ function loadLocalStorage() {
                             // appending the new child to the parent.
                             newMoonUl.appendChild(newMoonLi);
                         });
-                        
-                        
+                            // Add the ul to mooninfo element.
+                            moonInfo.appendChild(newMoonUl);
                     } else {
                         const newMoonInfo = document.createElement('p');
                         // if the planet doesn't have any moons, it will display this message.
