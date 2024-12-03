@@ -599,5 +599,6 @@ main #searchBtn{
 main #backButton{
     top: 0%;
     right: -35%;
+    font-size: 0.70rem;
 }
 }
