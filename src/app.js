@@ -18,6 +18,8 @@ const backButton = document.getElementById('backButton');
 const url = 'https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com';
 let apiKey;
 
+    
+
 const fetchApiKey = async () => {
     try {
         const response = await fetch(`${url}/keys`, {
@@ -32,7 +34,9 @@ const fetchApiKey = async () => {
 
         const data = await response.json();
         apiKey = data.key;
-        console.log('API Key:', apiKey);
+        localStorage.setItem('apiKey', apiKey);
+        console.log('stored ', apiKey);
+        
 
         if (apiKey) {
             fetchDataWithKey();
@@ -41,7 +45,6 @@ const fetchApiKey = async () => {
         console.error('Fetch error:', error);
     }
 };
-
 const fetchDataWithKey = async () => {
     if (!apiKey) {
         console.error('No key.');
@@ -78,7 +81,7 @@ const fetchDataWithKey = async () => {
                 if (searchedData.length > 0) {
                     
                     localStorage.setItem('SearchedData', JSON.stringify(searchedData));
-                    window.location.href = 'results.html';
+                    window.location.href = '/results.html';
                 } else {
                     errorMsg.textContent = "Couldn't find any results.";
                 }
@@ -89,7 +92,10 @@ const fetchDataWithKey = async () => {
     }
 };
 
-function loadLocalStorage() {
+
+
+
+function loadLocalStorage ()  {
     const storedData = localStorage.getItem('SearchedData');
     if(window.location.pathname === '/results.html'){
         if (storedData) {
@@ -121,9 +127,16 @@ function loadLocalStorage() {
                 newPlanetType.textContent = `${display.type.charAt(0).toUpperCase()}${display.type.slice(1)}`;
                 planetType.appendChild(newPlanetType);
 
+
                 const newMoonInfo = document.createElement('p');
-                newMoonInfo.textContent = display.moons;
-                moonInfo.appendChild(newMoonInfo);
+                if(display.moons.length > 0){
+                    newMoonInfo.textContent = display.moons;
+                    moonInfo.appendChild(newMoonInfo);
+                } else {
+                    newMoonInfo.textContent = 'Den här planeten har inga månar.'
+                    moonInfo.appendChild(newMoonInfo);
+                }
+                
 
 
             }
@@ -134,17 +147,26 @@ function loadLocalStorage() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', loadLocalStorage);
-
-fetchApiKey();
-
 document.addEventListener('DOMContentLoaded', () => {
+    loadLocalStorage();
+    
+    apiKey = localStorage.getItem('apiKey');
+    console.log('Loaded API Key:', apiKey);
+
+    // Om ingen nyckel finns eller om den är tom, hämta en ny
+    if (!apiKey || apiKey.trim() === "") {
+        fetchApiKey();
+    } else {
+        fetchDataWithKey();  // Använd den lagrade nyckeln om den finns
+    }
+
     if(backButton){
         backButton.addEventListener('click', () => {
             window.location.href = '/index.html';
+            localStorage.clear();
                 localStorage.removeItem('SearchedData');
+                localStorage.removeItem('apiKey');
         });
     }
-})
-
+});
 

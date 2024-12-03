@@ -188,6 +188,146 @@ main #errorMsg{
 
 /* Second page */
 
+main .star1,main .star2,main .star3,main .star4,main .star5
+main .star6,main .star7,main .star8,main .star9,main .star10
+main .star11,main .star12,main .star13,main .star14,main .star15
+main .star16,main .star17,main .star18,main .star19,main .star20,
+main .star21{
+    font-size: 0.5rem;
+    position: absolute;
+    color: white;
+    animation: blink 3s   infinite  ;
+}
+main .star1 {
+    opacity: 0.17;
+    top: 28%;
+    right: 72%;
+    animation-duration: 2.5s;
+}
+main .star2 {
+    opacity: 0.39;
+    top: 4%;
+    right: 61%;
+    animation-duration: 3.1s;
+}
+main .star3 {
+    opacity: 0.03;
+    top: 89%;
+    right: 24%;
+    animation-duration: 3.5s;
+}
+main .star4 {
+    opacity: 0.49;
+    top: 24%;
+    right: 85%;
+    animation-duration: 2.7s;
+}
+main .star5 {
+    opacity: 0.08;
+    bottom: 18%;
+    left: 87%;
+    animation-duration: 4s;
+}
+main .star6 {
+    opacity: 0.22;
+    top: 75%;
+    left: 13%;
+    animation-duration: 2.9s;
+}
+main .star7 {
+    opacity: 0.31;
+    top: 65%;
+    right: 33%;
+    animation-duration: 3.2s;
+}
+main .star8 {
+    opacity: 0.14;
+    top: 54%;
+    left: 58%;
+    animation-duration: 3.6s;
+}
+main .star9 {
+    opacity: 0.26;
+    top: 83%;
+    left: 12%;
+    animation-duration: 3.3s;
+}
+main .star10 {
+    opacity: 0.44;
+    bottom: 9%;
+    right: 43%;
+    animation-duration: 2.8s;
+}
+main .star11 {
+    opacity: 0.06;
+    top: 53%;
+    right: 17%;
+    animation-duration: 4.2s;
+}
+main .star12 {
+    opacity: 0.37;
+    top: 8%;
+    left: 41%;
+    animation-duration: 2.6s;
+}
+main .star13 {
+    opacity: 0.18;
+    top: 90%;
+    left: 59%;
+    animation-duration: 3.4s;
+}
+main .star14 {
+    opacity: 0.33;
+    bottom: 12%;
+    right: 77%;
+    animation-duration: 3s;
+}
+main .star15 {
+    opacity: 0.29;
+    top: 66%;
+    left: 19%;
+    animation-duration: 2.3s;
+}
+main .star16 {
+    opacity: 0.25;
+    top: 10%;
+    right: 10%;
+    animation-duration: 3.5s;
+}
+main .star17 {
+    opacity: 0.45;
+    top: 30%;
+    right: 8%;
+    animation-duration: 4s;
+}
+main .star18 {
+    opacity: 0.12;
+    top: 60%;
+    right: 12%;
+    animation-duration: 4.3s;
+}
+main .star19 {
+    opacity: 0.35;
+    bottom: 15%;
+    right: 5%;
+    animation-duration: 4.5s;
+}
+main .star20 {
+    opacity: 0.18;
+    bottom: 30%;
+    right: 3%;
+    animation-duration: 4.1s;
+}
+main .star21 {
+    opacity: 0.21;
+    bottom: 20%;
+    right: 13%;
+    animation-duration: 2.1s;
+}
+
+
+
+
 main #resultView{
     position: relative;
     margin: 10px auto;
@@ -291,7 +431,15 @@ main #backButton{
     cursor: pointer;
 }
 
+@keyframes blink {
+    0%, 100%{
+        opacity: 0.1;
+    }
 
+    50%{
+        opacity: 0.5;
+    }
+}
 
 @keyframes spin {
     0%{
