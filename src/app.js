@@ -103,7 +103,7 @@ const fetchDataWithKey = async () => {
                 // If the search data is not empty, store it in localStorage and navigate to results page
                 if (searchedData.length > 0) {
                     localStorage.setItem('SearchedData', JSON.stringify(searchedData));
-                    window.location.href = '/results.html';
+                    window.location.href = 'results.html';
                 } else {
                     // Update the error message if no planets match the search
                     errorMsg.textContent = "Kunde inte hitta något resultat.";
