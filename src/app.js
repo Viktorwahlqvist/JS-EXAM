@@ -122,7 +122,7 @@ function loadLocalStorage() {
      const storedData = localStorage.getItem('SearchedData');
 
     // Check if the user is on the results page
-    if (window.location.pathname === '/results.html') {
+    if (window.location.pathname === '/JS-EXAM/results.html') {
             // If there is stored data, parse the first index of the array to display
             if (storedData) {
                 const display = JSON.parse(storedData)[0];
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Add an event listener to the back button with a click event
         backButton.addEventListener('click', () => {
             // When the back button is clicked, navigate to the index page
-            window.location.href = '/index.html';
+            window.location.href = '/JS-EXAM/index.html';
             // Remove the stored data from localStorage when going back
             localStorage.removeItem('SearchedData');
             localStorage.removeItem('apiKey');
