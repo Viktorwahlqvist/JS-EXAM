@@ -122,7 +122,7 @@ function loadLocalStorage() {
      const storedData = localStorage.getItem('SearchedData');
 
     // Check if the user is on the results page
-    if (window.location.pathname === '/JS-EXAM/results.html') {
+    if (window.location.pathname.endsWith('results.html')) {
             // If there is stored data, parse the first index of the array to display
             if (storedData) {
                 const display = JSON.parse(storedData)[0];
