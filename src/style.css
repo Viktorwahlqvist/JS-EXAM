@@ -416,7 +416,7 @@ main .information{
     border-bottom: 2px solid rgb(43, 43, 43);
 }
 main #circumference, main #distance, main #dayTemp, main #nightTemp,
-main #planetType, main #moonInfo{
+main #planetType, main #moonInfo, main .moonInfo{
     gap :4px;
     color: #FFFFFF;
     font-family: "Roboto", condensed;
