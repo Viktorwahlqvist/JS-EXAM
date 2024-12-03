@@ -71,7 +71,7 @@ const fetchDataWithKey = async () => {
             },
         });
 
-        // If response is not OK, throw an error
+        // If response is not ok, throw an error
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -90,13 +90,14 @@ const fetchDataWithKey = async () => {
 
                 // If userSearch has no value, update the error message
                 if (!userSearch) {
-                    errorMsg.textContent = "Please search for a planet.";
+                    errorMsg.textContent = "Sök på en Planet.";
+                    return;
                 }
 
-                // Use the filter method with includes to find planets that match the user's search
+                // Use the filter method to find planets that match the user's search
                 const searchedData = data.bodies.filter(item =>
                     // Using toLowerCase so that upper or lower case doesn't matter
-                    item.name.toLowerCase().includes(userSearch.toLowerCase())
+                    item.name.toLowerCase() == (userSearch.toLowerCase())
                 );
 
                 // If the search data is not empty, store it in localStorage and navigate to results page
@@ -105,7 +106,7 @@ const fetchDataWithKey = async () => {
                     window.location.href = '/results.html';
                 } else {
                     // Update the error message if no planets match the search
-                    errorMsg.textContent = "Couldn't find any results.";
+                    errorMsg.textContent = "Kunde inte hitta något resultat.";
                 }
             });
         }
