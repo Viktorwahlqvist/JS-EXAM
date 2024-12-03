@@ -171,15 +171,22 @@ function loadLocalStorage() {
                     // appending the new child to the parent.
                     planetType.appendChild(newPlanetType);
 
-                    // creating new element
-                    const newMoonInfo = document.createElement('p');
                     // Checks if the planet has a moon
                     if(display.moons.length > 0){
-                        // assigning the moons to the new created element.
-                        newMoonInfo.textContent = display.moons;
-                        // appending the new child to the parent.
-                        moonInfo.appendChild(newMoonInfo);
+                         // creating new element
+                        const newMoonUl = document.createElement('ul');
+                       
+                        // forEach incase of its more then 1 moons. 
+                        display.moons.forEach(moon => {
+                            const newMoonLi = document.createElement('li');
+                            newMoonLi.textContent = moon;
+                            // appending the new child to the parent.
+                            newMoonUl.appendChild(newMoonLi);
+                        });
+                        
+                        
                     } else {
+                        const newMoonInfo = document.createElement('p');
                         // if the planet doesn't have any moons, it will display this message.
                         newMoonInfo.textContent = 'Den här planeten har inga månar.';
                         // appending the new child to the parent.
