@@ -509,7 +509,7 @@ main #backButton{
         position: absolute;
         width: 800px;
         height: 800px;
-        left: -750px;
+        left: 31px;
     }
     main.main-container section.planeter-container section.planeter{
         gap: 4%;
@@ -580,25 +580,25 @@ main #backButton{
         width: 22px;
         height: 22px;
         border-radius: 50%;
-}
-main #searchForm{
-    position: absolute;
-    bottom: 10% ;
-    right: 20%;
-}
-main #planetSearch{
-    font-size: 1rem;
-    text-align: center;
-    margin-right: 0;
-}
-main #searchBtn{
-    background-color: #FFFFF0;
-    font-size: 1rem;
-    padding: 4px 10px;
-}
-main #backButton{
-    top: 0%;
-    right: -35%;
-    font-size: 0.70rem;
-}
+    }
+    main #searchForm{
+        position: absolute;
+        bottom: 10% ;
+        right: 20%;
+    }
+    main #planetSearch{
+        font-size: 1rem;
+        text-align: center;
+        margin-right: 0;
+    }
+    main #searchBtn{
+        background-color: #FFFFF0;
+        font-size: 1rem;
+        padding: 4px 10px;
+    }
+    main #backButton{
+        top: 0%;
+        right: -35%;
+        font-size: 0.70rem;
+    }
 }

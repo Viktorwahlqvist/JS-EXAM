@@ -25,10 +25,7 @@ const fetchApiKey = async () => {
     try {
         // Await method to wait for the fetch request to complete
         const response = await fetch(`${url}/keys`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            method: 'POST'
         });
 
         // If response isn't OK, throw an error
@@ -192,7 +189,7 @@ function loadLocalStorage() {
                         newMoonInfo.textContent = 'Den här planeten har inga månar.';
                         // appending the new child to the parent.
                         moonInfo.appendChild(newMoonInfo);
-}
+                    }
 
             }
         } else {
