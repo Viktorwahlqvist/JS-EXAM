@@ -56,6 +56,7 @@ const fetchDataWithKey = async () => {
     // If there is no API key, send an error message
     if (!apiKey) {
         console.error('No key.');
+        // return so it stops executing further code
         return;
     }
 
@@ -85,9 +86,12 @@ const fetchDataWithKey = async () => {
             // Trim the planet search input and assign it to userSearch
             const userSearch = planetSearch.value.trim();
 
-            // If userSearch has no value, update the error message
-            if (!userSearch) {
-                errorMsg.textContent = "Sök på en Planet.";
+            // If userSearch has no value or if there are no matches, update the error message
+            if (!userSearch || searchedData.length === 0) {
+                /*  If userSearch is empty, this is true and it will assign the first option
+                 otherwise it is false and will assign the second option */ 
+                errorMsg.textContent = !userSearch ? "Sök på en Planet." : "Kunde inte hitta något resultat.";
+                // return so it stops executing further code
                 return;
             }
 
@@ -101,14 +105,16 @@ const fetchDataWithKey = async () => {
             if (searchedData.length > 0) {
                 localStorage.setItem('SearchedData', JSON.stringify(searchedData));
                 window.location.href = '/JS-EXAM/results.html';
-            } else {
-                // Update the error message if no planets match the search
-                errorMsg.textContent = "Kunde inte hitta något resultat.";
             }
             });
+        } else {
+            // return so it stops executing further code
+            return;
         }
     } catch (error) {
         console.error('Fetch error:', error);
+        // return so it stops executing further code
+        return;
     }
 };
 
@@ -197,6 +203,8 @@ function loadLocalStorage() {
         } else {
             // If no data was found in localStorage, log an error
             console.error('No data found in localStorage.');
+            // return so it stops executing further code
+            return;
         }
     }
 }
