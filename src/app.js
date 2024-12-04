@@ -86,20 +86,20 @@ const fetchDataWithKey = async () => {
             // Trim the planet search input and assign it to userSearch
             const userSearch = planetSearch.value.trim();
 
-            // If userSearch has no value or if there are no matches, update the error message
-            if (!userSearch || searchedData.length === 0) {
+           // Use the filter method to find planets that match the user's search
+            const searchedData = data.bodies.filter(item =>
+                // Using toLowerCase so that upper or lower case doesn't matter
+                item.name.toLowerCase() == (userSearch.toLowerCase())
+            );
+
+             // If userSearch has no value or if there are no matches, update the error message
+             if (!userSearch || searchedData.length === 0) {
                 /*  If userSearch is empty, this is true and it will assign the first option
                  otherwise it is false and will assign the second option */ 
                 errorMsg.textContent = !userSearch ? "Sök på en Planet." : "Kunde inte hitta något resultat.";
                 // return so it stops executing further code
                 return;
             }
-
-            // Use the filter method to find planets that match the user's search
-            const searchedData = data.bodies.filter(item =>
-                // Using toLowerCase so that upper or lower case doesn't matter
-                item.name.toLowerCase() == (userSearch.toLowerCase())
-            );
 
             // If the search data is not empty, store it in localStorage and navigate to results page
             if (searchedData.length > 0) {
