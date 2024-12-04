@@ -506,10 +506,8 @@ main #backButton{
         font-size: 1rem;
     }
     main.main-container section.planeter-container .sun{
-        position: absolute;
-        width: 800px;
-        height: 800px;
-        left: 31px;
+        display: none;
+        
     }
     main.main-container section.planeter-container section.planeter{
         gap: 4%;
@@ -595,6 +593,9 @@ main #backButton{
         background-color: #FFFFF0;
         font-size: 1rem;
         padding: 4px 10px;
+    }
+    main section .moon{
+        display: none;
     }
     main #backButton{
         top: 0%;
