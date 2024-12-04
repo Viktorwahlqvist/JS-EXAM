@@ -42,10 +42,6 @@ const fetchApiKey = async () => {
         // Console log to make sure the API key was saved
         console.log('stored ', apiKey);
         
-        // If the API key is stored in the variable, run the fetchDataWithKey function
-        if (apiKey) {
-            fetchDataWithKey();
-        }
     } catch (error) {
         console.error('Fetch error:', error);
     }
@@ -77,7 +73,7 @@ const fetchDataWithKey = async () => {
         // When response is converted to JSON, it will be assigned to data
         const data = await response.json();
 
-        // Check if data has a .bodies object and if searchBtn exists
+        // Check if data has a .bodies and if searchBtn exists
         if (data.bodies && searchBtn) {
             // Add an event listener to the search button with a click event
             searchBtn.addEventListener('click', (event) => {
@@ -210,7 +206,7 @@ function loadLocalStorage() {
 }
 
 // Event listener for when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async ()  => {
     // Run the loadLocalStorage function when the page is loaded
     loadLocalStorage();
     // Assign the stored API key to the variable
@@ -220,7 +216,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // If there is no API key, fetch a new one
     if (!apiKey || apiKey.trim() === "") {
-        fetchApiKey();
+        // await so fetchDataWithKey wait for fetchapikey to be done.
+       await fetchApiKey();
+       fetchDataWithKey();
     } else {
         // Otherwise, fetch data using the stored API key
         fetchDataWithKey();
