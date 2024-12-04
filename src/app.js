@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded', async ()  => {
     loadLocalStorage();
     // Assign the stored API key to the variable
     apiKey = localStorage.getItem('apiKey');
-    // Log the API key to check if it exists
-    if (apiKey && apiKey !== null){
+    // Log the API key if it is not undefined or null.
+    if (apiKey != null){
         console.log('Loaded API Key:', apiKey);
     }
     // If there is no API key, fetch a new one
