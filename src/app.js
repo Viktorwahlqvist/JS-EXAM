@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', async ()  => {
         // Check if setTitle has a value and if it has a name property.
         if (setTitle && setTitle.name){
             // If a name exists, update the document's title with the planet's name.
-            document.title = `Resultat för planetet ${setTitle.name}`
+            document.title = `Resultat för planeten ${setTitle.name}`
         }
     } 
     else {
