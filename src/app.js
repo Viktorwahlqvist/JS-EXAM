@@ -115,7 +115,7 @@ const fetchDataWithKey = async () => {
 };
 
 // Function to load data from localStorage
-function loadLocalStorage() {
+const loadLocalStorage = () => {
     // Get the saved data from localStorage
      const storedData = localStorage.getItem('SearchedData');
 
