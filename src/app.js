@@ -215,14 +215,12 @@ document.addEventListener('DOMContentLoaded', async ()  => {
         // If data exists, parse it from JSON to an object.
         const setTitle = JSON.parse(searchedData)[0];
         // Check if setTitle has a value and if it has a name property.
-    if (setTitle && setTitle.name){
-        // If a name exists, update the document's title with the planet's name.
-        document.title = `Resultat för planetet ${setTitle.name}`
-    } else {
-        // If no name exists in setTitle, set the title to indicate the planet was not found.
-        document.title = 'Planeten hittades ej, Sök igen.'
+        if (setTitle && setTitle.name){
+            // If a name exists, update the document's title with the planet's name.
+            document.title = `Resultat för planetet ${setTitle.name}`
+        }
     } 
-    } else {
+    else {
         // If searchedData doesn't exist, set the title to prompt the user to search.
         document.title = 'Sök på en planet.'
     }

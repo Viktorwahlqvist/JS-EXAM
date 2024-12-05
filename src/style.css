@@ -28,6 +28,7 @@ body{
     right: 2%;
     gap: 16px;
 }
+/* Styling for h1 first page*/
 #name{
     Width:625px;
     height: 60px;
@@ -40,6 +41,7 @@ body{
     font-weight: 400;
 
 }
+/* Styling for h2 first page. */
 #latin{
     Width:625px;
     height: 60px;
@@ -54,7 +56,7 @@ body{
 
 }
 
-
+/* Styling for the planets outer container */
 main.main-container section.planeter-container{
     position: relative;
     display: flex;
@@ -63,6 +65,7 @@ main.main-container section.planeter-container{
     height: 100vh;
     width: 100vw;
 }
+/* Styling for the sun */
 main.main-container section.planeter-container .sun{
     position: absolute;
     width: 1278px;
@@ -73,6 +76,7 @@ main.main-container section.planeter-container .sun{
     box-shadow: 0 0 70px 5px rgba(255, 223, 0, 0.3);
     animation: move 5s infinite forwards;
 }
+/* Styling for the planets inner container */
 main.main-container section.planeter-container section.planeter{
     display: flex;
     justify-content: flex-start;
@@ -81,26 +85,28 @@ main.main-container section.planeter-container section.planeter{
     width: 100%;
     height: 100%;
 }
-
+/* animation effect for all the planets */
 main.main-container section.planeter-container section.planeter .spin:hover{
     animation: spin 1s linear;
     cursor: pointer;
     
 }
+/* Styling for Mercury */
 main.main-container section.planeter-container section.planeter .mercury{
     margin-left: 13%;
     background: #8c8a84;
     width: 14px;
     height: 14px;
     border-radius: 50%;
-}
+} 
+/* Styling for Venus */
 main.main-container section.planeter-container section.planeter .venus {
     background: #e7cccb;
     width: 26px;
     height: 26px;
     border-radius: 50%;
 }
-
+/* Styling for Earth */
 main.main-container section.planeter-container section.planeter .earth{
     background: #418ed5;
     width: 28px;
@@ -108,20 +114,21 @@ main.main-container section.planeter-container section.planeter .earth{
     border-radius: 50%;
 
 }
+/* Styling for Mars */
 main.main-container section.planeter-container section.planeter .mars{
     background: #ef5f5f;
     width: 14px;
     height: 14px;
     border-radius: 50%;
 }
-
+/* Styling for Jupiter */
 main.main-container section.planeter-container section.planeter .jupiter{
     background: #e29468;
     width: 188px;
     height: 188px;
     border-radius: 50%;
 }
-
+/* Styling for Saturn */
 main.main-container section.planeter-container section.planeter .saturn{
     position: relative;
     background: #c7aa72;
@@ -129,7 +136,7 @@ main.main-container section.planeter-container section.planeter .saturn{
     height: 144px;
     border-radius: 50%;   
 }
-
+/* Styling for Saturn circle around it */
 main.main-container section.planeter-container section.planeter .saturn::before{
     position: absolute;
     top: 50%;
@@ -142,25 +149,27 @@ main.main-container section.planeter-container section.planeter .saturn::before{
     opacity: 0.5;
     transform: translateY(-50%) rotate(-30deg);
 }
-
+/* Styling for Uranus */
 main.main-container section.planeter-container section.planeter .uranus{
     background: #c7aa72;
     width: 66px;
     height: 66px;
     border-radius: 50%;   
 }
-
+/* Styling for Neptune */
 main.main-container section.planeter-container section.planeter .neptune{
     background: #7A91A7;
     width: 66px;
     height: 66px;
     border-radius: 50%;
 }
+/* Styling for Search Form */
 main #searchForm{
     position: absolute;
     bottom: 10% ;
     right: 34%;
 }
+/* Styling for Planet Search */
 main #planetSearch{
     color: white;
     font-size: 2rem;
@@ -170,13 +179,16 @@ main #planetSearch{
     border-bottom: 1px solid black;
     margin-right: 30px;
 }
+/* Styling for Planet Search focus and hover */
 main #planetSearch:focus,main #planetSearch:hover {
     border: 2px solid black;
 }
+/* Styling for Planet Search placeholder */
 main #planetSearch::placeholder{
     color: white;
     opacity: 0.5;
 }
+/* Styling for search button */
 main #searchBtn{
     background-color: #FFFFF0;
     font-size: 1.5rem;
@@ -184,13 +196,14 @@ main #searchBtn{
     border-radius: 10px;
     cursor: pointer;
 }
+/* Styling for error message */
 main #errorMsg{
     font-size: 1rem;
     color: red;
 }
 
 /* Second page */
-
+/* Styling for all the stars */
 main .star1,main .star2,main .star3,main .star4,main .star5
 main .star6,main .star7,main .star8,main .star9,main .star10
 main .star11,main .star12,main .star13,main .star14,main .star15
@@ -201,6 +214,7 @@ main .star21{
     color: white;
     animation: blink 3s   infinite  ;
 }
+/* 21 stars with random opacity, position and animation time */
 main .star1 {
     opacity: 0.17;
     top: 28%;
@@ -330,7 +344,7 @@ main .star21 {
 
 
 
-
+/* Styling for result container */
 main #resultView{
     position: relative;
     margin: 10px auto;
@@ -340,6 +354,7 @@ main #resultView{
     flex-direction: column;
     align-items: center;
 }
+/* Styling for the moon*/
 main section .moon {
     position: absolute;
     width: 1278px;
@@ -349,7 +364,7 @@ main section .moon {
     background: #428ED4;
     border-radius: 50%;
 }
-
+/* Styling for moon, 2 extra lines */
 main section .moon::before,
 main section .moon::after {
     content: '';
@@ -359,7 +374,6 @@ main section .moon::after {
     transform: translate(-50%, -50%);
     border-radius: 50%;
 }
-
 main section .moon::before {
     width: 1400px;
     height: 1400px;
@@ -371,6 +385,7 @@ main section .moon::after {
     height: 1500px;
     background: #428ED40F;
 }
+/* Styling for h1 on second page. */
 main #planetName{
     width: 100%;
     height: 100%;
@@ -381,6 +396,7 @@ main #planetName{
     font-family: "Secular One", sans-serif;
     font-weight: 400;
 }
+/* Styling for h2 on second page. */
 main #latinName{
     width: 100%;
     height: 100%;
@@ -392,6 +408,7 @@ main #latinName{
     font-family: "Secular One", serif;
     font-weight: 400;
 }
+/* Styling for the desc */
 main #desc{
     width: 100%;
     height: 100%;
@@ -404,6 +421,7 @@ main #desc{
     padding-bottom: 20px;
     border-bottom: 2px solid rgb(43, 43, 43);
 }
+/* Styling for the information container */
 main .information{
     width: 100%;
     height: 100%;
@@ -415,6 +433,7 @@ main .information{
     padding-bottom: 20px;
     border-bottom: 2px solid rgb(43, 43, 43);
 }
+/* Styling for all  the information of the planet. */
 main #circumference, main #distance, main #dayTemp, main #nightTemp,
 main #planetType, main #moonInfo, main .moonInfo{
     gap :4px;
@@ -422,10 +441,11 @@ main #planetType, main #moonInfo, main .moonInfo{
     font-family: "Roboto", condensed;
     font-weight: 300;
 }
+/* if its more then 1 moon js create a list, remove the bullets. */
 .moonInfo{
     list-style: none;
 }
-
+/* Styling for the bacak button on second page. */
 main #backButton{
     position: absolute;
     top: 4%;
