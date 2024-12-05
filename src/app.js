@@ -21,7 +21,7 @@ const url = 'https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com';
 let apiKey;
 
 // Function to fetch API key asynchronously
-const fetchApiKey = async () => {
+const fetchApiKey = async (url) => {
     try {
         // Await method to wait for the fetch request to complete
         const response = await fetch(`${url}/keys`, {
@@ -48,7 +48,7 @@ const fetchApiKey = async () => {
 };
 
 // Function to fetch data using the API key asynchronously
-const fetchDataWithKey = async () => {
+const fetchDataWithKey = async (apiKey, url) => {
     // If there is no API key, send an error message
     if (!apiKey) {
         console.error('No key.');
@@ -217,11 +217,11 @@ document.addEventListener('DOMContentLoaded', async ()  => {
     // If there is no API key, fetch a new one
     if (!apiKey || apiKey.trim() === "") {
         // await so fetchDataWithKey wait for fetchapikey to be done.
-       await fetchApiKey();
-       fetchDataWithKey();
+       await fetchApiKey(url);
+       fetchDataWithKey(apiKey, url);
     } else {
         // Otherwise, fetch data using the stored API key
-        fetchDataWithKey();
+        fetchDataWithKey(apiKey, url);
     }
 
     // Check if the back button exists
