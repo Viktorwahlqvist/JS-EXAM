@@ -457,7 +457,7 @@ main #backButton{
     cursor: pointer;
 }
 
-/* Keyframes */
+/* Keyframes for the stars, blink effect */
 @keyframes blink {
     0%, 100%{
         opacity: 0.1;
@@ -467,7 +467,7 @@ main #backButton{
         opacity: 0.5;
     }
 }
-
+/* Keyframes for the planets to spinand change shadow when hover  */
 @keyframes spin {
     0%{
         transform: rotate(0deg);
@@ -484,6 +484,7 @@ main #backButton{
     }
     
 }
+/* Keyframes to change position on the sun*/
 @keyframes move {
     0%{
         left: -1225px;
