@@ -99,7 +99,7 @@ const fetchDataWithKey = async (apiKey, url) => {
 
             // If the search data is not empty, store it in localStorage and navigate to results page
             if (searchedData.length > 0) {
-                localStorage.setItem('SearchedData', JSON.stringify(searchedData));
+                localStorage.setItem('searchedData', JSON.stringify(searchedData));
                 window.location.href = '/JS-EXAM/results.html';
             }
             });
@@ -117,7 +117,7 @@ const fetchDataWithKey = async (apiKey, url) => {
 // Function to load data from localStorage
 const loadLocalStorage = () => {
     // Get the saved data from localStorage
-     const storedData = localStorage.getItem('SearchedData');
+     const storedData = localStorage.getItem('searchedData');
 
     // Check if the user is on the results page
     if (window.location.pathname.endsWith('results.html')) {
@@ -209,7 +209,7 @@ document.addEventListener('DOMContentLoaded', async ()  => {
     // Run the loadLocalStorage function when the page is loaded
     loadLocalStorage();
     // Retrieve data from localStorage.
-    const searchedData = localStorage.getItem('SearchedData');
+    const searchedData = localStorage.getItem('searchedData');
     // Check if searchedData has a value.
     if (searchedData){
         // If data exists, parse it from JSON to an object.
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', async ()  => {
         // When the back button is clicked, navigate to the index page
         window.location.href = '/JS-EXAM/index.html';
         // Remove the stored data from localStorage when going back
-        localStorage.removeItem('SearchedData');
+        localStorage.removeItem('searchedData');
         localStorage.removeItem('apiKey');
         });
     }
