@@ -208,6 +208,25 @@ const loadLocalStorage = () => {
 document.addEventListener('DOMContentLoaded', async ()  => {
     // Run the loadLocalStorage function when the page is loaded
     loadLocalStorage();
+    // Retrieve data from localStorage.
+    const searchedData = localStorage.getItem('SearchedData');
+    // Check if searchedData has a value.
+    if (searchedData){
+        // If data exists, parse it from JSON to an object.
+        const setTitle = JSON.parse(searchedData)[0];
+        // Check if setTitle has a value and if it has a name property.
+    if (setTitle && setTitle.name){
+        // If a name exists, update the document's title with the planet's name.
+        document.title = `Resultat för planetet ${setTitle.name}`
+    } else {
+        // If no name exists in setTitle, set the title to indicate the planet was not found.
+        document.title = 'Planeten hittades ej, Sök igen.'
+    } 
+    } else {
+        // If searchedData doesn't exist, set the title to prompt the user to search.
+        document.title = 'Sök på en planet.'
+    }
+
     // Assign the stored API key to the variable
     apiKey = localStorage.getItem('apiKey');
     // Log the API key if it is not undefined or null.
