@@ -491,8 +491,8 @@ main #backButton{
     50%{
         left: -1245px;
     }
-    100%{
-        left: -1245px;
+    75%{
+        left: -1235px;
     }
     100%{
         left: -1225px;
