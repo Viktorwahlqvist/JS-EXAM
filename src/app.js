@@ -20,8 +20,58 @@ const url = 'https://n5n3eiyjb0.execute-api.eu-north-1.amazonaws.com';
 // API key variable to hold the API key
 let apiKey;
 
+// Event listener for when the DOM content is loaded
+document.addEventListener('DOMContentLoaded', async ()  => {
+    // Run the loadLocalStorage function when the page is loaded
+    loadLocalStorage();
+    // Retrieve data from localStorage.
+    const searchedData = localStorage.getItem('searchedData');
+    // Check if searchedData has a value.
+    if (searchedData){
+        // If data exists, parse it from JSON to an object.
+        const setTitle = JSON.parse(searchedData)[0];
+        // Check if setTitle has a value and if it has a name property.
+        if (setTitle && setTitle.name){
+            // If a name exists, update the document's title with the planet's name.
+            document.title = `Resultat för planeten ${setTitle.name}`
+        }
+    } 
+    else {
+        // If searchedData doesn't exist, set the title to prompt the user to search.
+        document.title = 'Sök på en planet.'
+    }
+
+    // Assign the stored API key to the variable
+    apiKey = localStorage.getItem('apiKey');
+    // Log the API key if it is not undefined or null.
+    if (apiKey != null){
+        console.log('Loaded API Key:', apiKey);
+    }
+    // If there is no API key, fetch a new one
+    if (!apiKey || apiKey.trim() === "") {
+        // await so fetchDataWithKey wait for fetchapikey to be done.
+       await fetchApiKey(url);
+       fetchDataWithKey(apiKey, url);
+    } else {
+        // Otherwise, fetch data using the stored API key
+        fetchDataWithKey(apiKey, url);
+    }
+
+    // Check if the back button exists
+    if (backButton) {
+        // Add an event listener to the back button with a click event
+        backButton.addEventListener('click', () => {
+        // When the back button is clicked, navigate to the index page
+        window.location.href = '/JS-EXAM/index.html';
+        // Remove the stored data from localStorage when going back
+        localStorage.removeItem('searchedData');
+        localStorage.removeItem('apiKey');
+        });
+    }
+});
+
 // Function to fetch API key asynchronously
-const fetchApiKey = async (url) => {
+async function fetchApiKey(url) {
     try {
         // Await method to wait for the fetch request to complete
         const response = await fetch(`${url}/keys`, {
@@ -48,7 +98,7 @@ const fetchApiKey = async (url) => {
 };
 
 // Function to fetch data using the API key asynchronously
-const fetchDataWithKey = async (apiKey, url) => {
+async function fetchDataWithKey(apiKey, url){
     // If there is no API key, send an error message
     if (!apiKey) {
         console.error('No key.');
@@ -115,7 +165,7 @@ const fetchDataWithKey = async (apiKey, url) => {
 };
 
 // Function to load data from localStorage
-const loadLocalStorage = () => {
+function loadLocalStorage(){
     // Get the saved data from localStorage
      const storedData = localStorage.getItem('searchedData');
 
@@ -204,52 +254,3 @@ const loadLocalStorage = () => {
         }
     }
 };
-// Event listener for when the DOM content is loaded
-document.addEventListener('DOMContentLoaded', async ()  => {
-    // Run the loadLocalStorage function when the page is loaded
-    loadLocalStorage();
-    // Retrieve data from localStorage.
-    const searchedData = localStorage.getItem('searchedData');
-    // Check if searchedData has a value.
-    if (searchedData){
-        // If data exists, parse it from JSON to an object.
-        const setTitle = JSON.parse(searchedData)[0];
-        // Check if setTitle has a value and if it has a name property.
-        if (setTitle && setTitle.name){
-            // If a name exists, update the document's title with the planet's name.
-            document.title = `Resultat för planeten ${setTitle.name}`
-        }
-    } 
-    else {
-        // If searchedData doesn't exist, set the title to prompt the user to search.
-        document.title = 'Sök på en planet.'
-    }
-
-    // Assign the stored API key to the variable
-    apiKey = localStorage.getItem('apiKey');
-    // Log the API key if it is not undefined or null.
-    if (apiKey != null){
-        console.log('Loaded API Key:', apiKey);
-    }
-    // If there is no API key, fetch a new one
-    if (!apiKey || apiKey.trim() === "") {
-        // await so fetchDataWithKey wait for fetchapikey to be done.
-       await fetchApiKey(url);
-       fetchDataWithKey(apiKey, url);
-    } else {
-        // Otherwise, fetch data using the stored API key
-        fetchDataWithKey(apiKey, url);
-    }
-
-    // Check if the back button exists
-    if (backButton) {
-        // Add an event listener to the back button with a click event
-        backButton.addEventListener('click', () => {
-        // When the back button is clicked, navigate to the index page
-        window.location.href = '/JS-EXAM/index.html';
-        // Remove the stored data from localStorage when going back
-        localStorage.removeItem('searchedData');
-        localStorage.removeItem('apiKey');
-        });
-    }
-});
